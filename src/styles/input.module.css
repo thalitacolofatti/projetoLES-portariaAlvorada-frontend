@@ -1,0 +1,25 @@
+.input {
+  padding: 1rem 2rem;
+  border: 0;
+  outline: none;
+  color: #000;
+  background-color: #e6e6e6;
+}
+
+.inputSearch {
+  padding: 1rem 2rem;
+  border: 0;
+  outline: none;
+  color: #000;
+  background-color: #e6e6e6;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.input:focus-visible {
+  padding: 1rem 2rem;
+  border: 0;
+  color: #000;
+  background-color: #e5e5e5;
+  outline: none;
+}

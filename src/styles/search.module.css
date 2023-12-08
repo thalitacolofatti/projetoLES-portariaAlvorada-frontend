@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fascinate&family=Roboto:wght@300;400;700;900&display=swap');
+
+.container {
+  background-color: #c1c1c1;
+  width: 400px;
+  padding: 20px;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.264);
+  margin-top: 160px;
+}
+
+.title {
+  text-align: left;
+  font-family: Comfortaa, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+}

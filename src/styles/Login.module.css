@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fascinate&family=Roboto:wght@300;400;700;900&display=swap');
+
+.background {
+  background-image: url('https://img.freepik.com/fotos-gratis/criancas-voltando-para-a-escola-juntos_23-2149507625.jpg?w=1380&t=st=1701889441~exp=1701890041~hmac=d925ab870a12823cb5aee06584883118a3b850bcc98037e8b43a3dbe5f06ff8c'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+.card {
+  background-color: #fff;
+  width: 400px;
+  height: 40%;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  border-radius: 5px;
+  color: #000;
+  box-shadow: 0.8rem 0.8rem 0.8rem #a0a0a043;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.error {
+  color: #8a0606;
+  font-weight: bold;
+  text-align: center;
+}
+
+.link {
+  text-align: center;
+}
+
+.link:hover {
+  font-weight: bold;
+  color:blueviolet;
+  text-decoration: underline;
+}
+
+.success {
+  color: #048a6d;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title {
+  text-align: left;
+  font-family: Comfortaa, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.titlec {
+  text-align: center;
+  color: #000;
+  font-family: Fascinate;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fascinate&family=Roboto:wght@300;400;700;900&display=swap');
+
+.buttonicon {
+  color: #1f1f1f;
+  background-color: #e0e0e0;
+  padding: 0.8rem;
+  outline: none;
+  border: 0;
+  border-radius: 50%;
+  font-size: large;
+}
+
+.buttonicon:hover {
+  color: #1f1f1f;
+  background-color: #919191;
+  padding: 8px;
+  outline: none;
+  border: 0;
+  border-radius: 50%;
+  font-size: large;
+}
+
+.header{
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  align-items: center;
+  box-shadow: #1f1f1f;
+  z-index: 10;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: #fff;
+  outline: none;
+  border: 0;
+}
+
+
+.imguser {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.menuclosed {
+  position: relative;
+}
+
+.menuopened {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 8px;
+  color: #000;
+  background-color: #fafafa;
+  box-shadow: #111;
+  border-radius: 5px;
+  border-top: #1f1f1f;
+  white-space: nowrap;
+}
+
+.name {
+  text-align: center;
+  font-family: Comfortaa;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.titlec {
+  text-align: center;
+  color: #000;
+  font-family: Fascinate;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+  .titlec {
+    font-size: 1.5rem;
+  }
+}
