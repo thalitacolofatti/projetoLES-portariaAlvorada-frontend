@@ -63,7 +63,7 @@ export default function SearchFilter() {
       <ContainerTitle title="Pesquisar por Aluno">
         <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={()=>setSuggestionsA(data || [])}
-          onMouseLeave={()=>setSuggestionsA([])}>
+          >
             <input onChange={handleChangeAluno} value={ searchAluno ? searchAluno : "" } type='text' placeholder="Buscar pelo nome" className={stylesh.inputSearch}/>
             <FaSearch className="flex ml-6"/>
         </form>
@@ -78,7 +78,6 @@ export default function SearchFilter() {
                   key={id} 
                   className='flex items-center gap-2'
                   onClick={() => {
-                    console.log('Link clicked:', linkHref);
                     setSearchAluno(''); 
                     setSuggestionsA([]);
                     if (linkHref){
@@ -97,7 +96,7 @@ export default function SearchFilter() {
       <ContainerTitle title="Pesquisar por Responsável">
         <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={()=>setSuggestionsR(data || [])}
-          onMouseLeave={()=>setSuggestionsR([])}>
+          >
             <input onChange={handleChangeResponsavel} value={ searchResponsavel ? searchResponsavel : "" } type='text' placeholder="Buscar pelo nome" className={stylesh.inputSearch} />
             <FaSearch className="flex ml-6"/>
         </form>
@@ -112,7 +111,6 @@ export default function SearchFilter() {
                   key={id} 
                   className='flex items-center gap-2'
                   onClick={() => {
-                    console.log('Link clicked:', linkHrefResp);
                     setSearchAluno(''); 
                     setSuggestionsA([]);
                     if (linkHrefResp){

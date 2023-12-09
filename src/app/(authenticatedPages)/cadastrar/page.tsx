@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { makeRequest } from '../../../../axios';
 
 import ContainerTitle from '@/components/ContainerTitle';
@@ -17,6 +18,7 @@ export default function CadastroResponsavel() {
   const [respImg, setRespImg] = useState ('');
   const [erro, setErro] = useState('');
   const [success, setSuccess] = useState('');
+  const router = useRouter();
 
   const handleRegisterGuardian = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,11 +35,13 @@ export default function CadastroResponsavel() {
         console.log(res.data);
         setSuccess(res.data.msg);
         setErro('');
+        router.push("/vincular");
       }).catch((err)=>{
         console.log(err);
         setErro(err.response.data.msg);
         setSuccess('');
       });
+      
   };
 
   return (
@@ -51,9 +55,11 @@ export default function CadastroResponsavel() {
             <Input type="text" placeholder="Telefone" onChange={(e) => setTelefone(e.currentTarget.value)} /> 
             <Input type="text" placeholder="Endereço" onChange={(e) => setEndereco(e.currentTarget.value)} /> 
             <Input type="text" placeholder="Link Imagem" onChange={(e) => setRespImg(e.currentTarget.value)} /> 
-            {erro.length > 0 && <span className={styles.erro}>*{erro}</span>}
-            {success.length > 0 && <span className={styles.success}>{success}</span>}
-            <Button onClick={(e)=>handleRegisterGuardian(e)}>Cadastrar</Button>
+            {erro.length > 0 && <span className="text-red-900 font-semibold">*{erro}</span>}
+            {success.length > 0 && <span className="text-green-900 font-semibold">{success}</span>}
+            <Button onClick={(e)=>handleRegisterGuardian(e)}>
+                Cadastrar
+            </Button>
           </form>
         </ContainerTitle>
       </div>

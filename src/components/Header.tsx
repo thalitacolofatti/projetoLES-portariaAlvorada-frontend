@@ -46,9 +46,7 @@ export default function Header() {
           <Link href="/vincular" className='flex gap-3 text-neutral-950 mr-10'>
             <FaObjectGroup className='w-6 h-6'/>Vincular Responsável a Aluno
           </Link>
-          <Link href="/enviar-mensagem" className='flex gap-3 text-neutral-950 mr-10'>
-            <TbMessageCircle2Filled className='w-6 h-6'/>Enviar mensagem
-          </Link>
+
         </div>
         <div className={stylesh.menuclosed} onMouseLeave={()=>setShowMenu(false)}>
           <button className={stylesh.icons} onClick={()=>setShowMenu(!showMenu)}>
