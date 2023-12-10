@@ -1,7 +1,7 @@
 "use client";
 
 import { makeRequest } from '../../../../axios';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { IBond } from "@/context/interfaces";
 import ContainerTitle from "../../../components/ContainerTitle";
@@ -12,6 +12,7 @@ import { FaTrashCan } from 'react-icons/fa6';
 export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) {
   const router = useRouter();
   const [bondId, setBondId]= useState<number|string>('');
+  // const queryClient = useQueryClient();
 
   const alunoQuery = useQuery({
     queryKey: ['detalhe-aluno', searchParams.id],
@@ -35,30 +36,27 @@ export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) 
     console.log(bondQuery.error);
   }
 
+  const deleteBondMutation = useMutation({
+    mutationFn: async (id: number) => {
+      return await makeRequest.put(`vinculo/delete-bond`, {id}).then((res) => res.data.data);
+    },
+    onSuccess: () => {
+      bondQuery.refetch();
+      console.log('Deletado');
+    },
+      onError: (error: Error) => {
+        console.error('Erro ao deletar:', error);
+      },
+    }
+  );
+
   const handleDeleteBond = async (id:number) => {
     setBondId(id);
-    try {
-      await bondDeleteQuery.refetch();
-      console.log('Deletado');
-    } catch (error) {
-      console.error('Erro ao deletar:', error);
+    if(id) {
+      deleteBondMutation.mutate(id);
     }
+    
   };
-
-  const bondDeleteQuery = useQuery({
-    queryKey: ['delete-bond', bondId],
-    queryFn: async () => {
-      try {
-        const res = await makeRequest.put(`vinculo/delete-bond`, {
-          id: bondId, 
-        });
-        return res.data.data;
-      } catch (error) {
-        console.error('Error in bond deletion:', error);
-        throw error;
-      }
-    },
-  });
 
   return (
       <div className='flex flex-row gap-14'>
@@ -84,8 +82,8 @@ export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) 
             {bondQuery.data && bondQuery.data.map((item: IBond) => {
               const linkHref = item.respId ? `/detalhe-responsavel?id=${item.respId}` : null;
               return (
-                <div className='flex flex-row'>
-                  <div id="link-resp" key={item.respId} className='flex flex-row bg-[#fff] items-center gap-8 shadow-lg shadow-slate-300'
+                <div key={item.id} className='flex flex-row'>
+                  <div id="link-resp" className='flex flex-row bg-[#fff] items-center gap-8 shadow-lg shadow-slate-300'
                     onClick={() => {
                       console.log(item.id)
                       console.log('Link clicked:', linkHref);
@@ -105,8 +103,8 @@ export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) 
                       /> 
                     </div>
                   </div>
-                  <div>
-                    <button id='trash' onClick={() => handleDeleteBond(item.id)} className='mr-2 mt-10 ml-3'><FaTrashCan/></button>
+                  <div className='mr-2 mt-10 ml-3'>
+                    <button onClick={() => handleDeleteBond(item.id)} id='trash'><FaTrashCan /></button>
                   </div>
                 </div>
               )

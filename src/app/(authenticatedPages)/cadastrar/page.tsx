@@ -58,7 +58,7 @@ export default function CadastroResponsavel() {
             {erro.length > 0 && <span className="text-red-900 font-semibold">*{erro}</span>}
             {success.length > 0 && <span className="text-green-900 font-semibold">{success}</span>}
             <Button onClick={(e)=>handleRegisterGuardian(e)}>
-                Cadastrar
+              Cadastrar
             </Button>
           </form>
         </ContainerTitle>

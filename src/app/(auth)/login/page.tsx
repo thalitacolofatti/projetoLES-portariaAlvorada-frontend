@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useContext } from 'react';
-import Link from 'next/link';
 import { makeRequest } from '../../../../axios';
 import { useRouter } from 'next/navigation';
 import { UserContext } from '../../../context/UserContext';
@@ -52,7 +51,6 @@ export default function LoginPage() {
             <Input type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
             {error.length > 0 && <span className={styles.error}>*{error}</span>}
             <Button onClick={(e: any)=>handleLogin(e)}>ENTRAR</Button>
-            {/* <Link className={styles.link} href="/esquecisenha">Esqueci a senha</Link> */}
           </form>
         </LoginCard>
       </div>

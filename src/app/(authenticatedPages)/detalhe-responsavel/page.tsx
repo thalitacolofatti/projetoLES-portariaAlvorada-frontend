@@ -1,7 +1,7 @@
 "use client";
 
 import { makeRequest } from '../../../../axios';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { IBond } from "@/context/interfaces";
 import { useState } from 'react';
 import ContainerTitle from "../../../components/ContainerTitle";
@@ -12,6 +12,7 @@ import { FaTrashCan } from 'react-icons/fa6';
 export default function DetalheResponsavel({searchParams}:{searchParams:{id:string}}) {
   const router = useRouter();
   const [bondId, setBondId]= useState<number|string>('');
+  const queryClient = useQueryClient();
   
   const respQuery = useQuery({
     queryKey: ['detalhe-responsavel', searchParams.id],
@@ -42,30 +43,31 @@ export default function DetalheResponsavel({searchParams}:{searchParams:{id:stri
     console.log(bondQuery.error);
   }
 
-  const handleDeleteBond = async (id:number) => {
-    setBondId(id);
-    try {
-      await bondDeleteQuery.refetch();
-      console.log('Deletado');
-    } catch (error) {
-      console.error('Erro ao deletar:', error);
-    }
-  };
-
-  const bondDeleteQuery = useQuery({
-    queryKey: ['delete-bond', bondId],
-    queryFn: async () => {
+  const deleteBondMutation = useMutation({
+    mutationFn: async (id: number) => {
       try {
-        const res = await makeRequest.put(`vinculo/delete-bond`, {
-          id: bondId, 
-        });
+        const res = await makeRequest.put(`vinculo/delete-bond`, { id });
         return res.data.data;
       } catch (error) {
-        console.error('Error in bond deletion:', error);
         throw error;
       }
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['get-bond-byresponsavel', searchParams.id]});
+      console.log('Deletado com sucesso');
+    },
+    onError: (error: Error) => {
+      console.error('Erro ao deletar:', error);
+    },
   });
+
+  const handleDeleteBond = async (id:number) => {
+    setBondId(id);
+    if(id) {
+        deleteBondMutation.mutateAsync(id);
+    }
+    
+  };
 
   return (
       <div className='flex flex-row gap-14'>
@@ -89,12 +91,12 @@ export default function DetalheResponsavel({searchParams}:{searchParams:{id:stri
           </div>
         </ContainerTitle>
         <ContainerTitle title="Alunos vinculados">
-          <div className='flex flex-col items-center gap-4 mt-2'>
+          <div className='flex flex-col items-center gap-4 mt-3'>
             {bondQuery.data && bondQuery.data.map((item: IBond) => {
               const linkHref = item.alunoId ? `/detalhe-aluno?id=${item.alunoId}` : null;
               return (
-                <div className='flex flex-row'>
-                  <div id="link-resp" key={item.alunoId} className='flex flex-row bg-[#fff] items-center gap-8 shadow-lg shadow-slate-300'
+                <div key={item.id} className='flex flex-row'>
+                  <div id="link-resp" className='flex flex-row bg-[#fff] items-center gap-8 shadow-lg shadow-slate-300'
                     onClick={() => {
                       console.log('Link clicked:', linkHref);
                       console.log('item', item);
@@ -115,7 +117,7 @@ export default function DetalheResponsavel({searchParams}:{searchParams:{id:stri
                       /> 
                     </div>
                   </div>
-                  <div key={item.id}>
+                  <div className='mt-3 ml-2'>
                     <button id='trash' onClick={() => handleDeleteBond(item.id)} className='mr-2 mt-10 ml-3'><FaTrashCan/></button>
                   </div>
               </div>

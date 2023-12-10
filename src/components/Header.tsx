@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { FaSearch, FaPlus, FaObjectGroup } from "react-icons/fa";
-import { TbMessageCircle2Filled } from 'react-icons/tb';
 
 import { useContext, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';

@@ -29,6 +29,8 @@ export default function CadastroResponsavel() {
 
   const handleChangeAluno = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchAluno(e.target.value);
+    setSuccess('');
+    setErro('');
   };
 
   const handleChangeResponsavel = (e: ChangeEvent<HTMLInputElement>) => {
@@ -103,6 +105,8 @@ export default function CadastroResponsavel() {
       });
       console.log(res.data);
       setSuccess(res.data.msg);
+      setAlunoNome('');
+      setRespNome('');
       setErro('');
     } catch (err: any) {
       console.log(err);
@@ -112,7 +116,7 @@ export default function CadastroResponsavel() {
   };
 
   return (
-    <> 
+    <>
       <div className="flex flex-row gap-14">
         <ContainerTitle title="Vincular aluno e responsável">
           <div id="input-map-aluno" className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
