@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import { FaSearch, FaPlus, FaObjectGroup } from "react-icons/fa";
-
+import Link from 'next/link';
+import { FaSearch, FaPlus, FaObjectGroup } from 'react-icons/fa';
+import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { makeRequest } from '../../axios';
 import { UserContext } from '../context/UserContext';
 
-import stylesh from "../styles/header.module.css";
+import stylesh from '../styles/header.module.css';
 
 export default function Header() {    
   const { user, setUser } = useContext(UserContext);
@@ -23,7 +23,7 @@ export default function Header() {
       });
     },
     onSuccess: () => {
-      setUser(undefined)
+      setUser(undefined);
       localStorage.removeItem('portariacolegio:user');
       router.push('/login');
     },
@@ -37,7 +37,7 @@ export default function Header() {
       <div className="flex gap-[8px] items-center outline-none border-0">
         <div className="flex justify-evenly">
           <Link href="/main" className='flex gap-3 text-neutral-950 mr-12'>
-              <FaSearch className='w-6 h-6'/> Pesquisar
+            <FaSearch className='w-6 h-6'/> Pesquisar
           </Link>
           <Link href="/cadastrar" className='flex gap-3 text-neutral-950 mr-10'>
             <FaPlus className='w-6 h-6'/>Cadastrar Responsável
@@ -47,15 +47,17 @@ export default function Header() {
           </Link>
 
         </div>
-        <div className={stylesh.menuclosed} onMouseLeave={()=>setShowMenu(false)}>
-          <button className={stylesh.icons} onClick={()=>setShowMenu(!showMenu)}>
-            <img 
+        <div className={stylesh.menuclosed} onMouseLeave={() => setShowMenu(false)}>
+          <button className={stylesh.icons} onClick={() => setShowMenu(!showMenu)}>
+            <Image 
+              width={48}
+              height={48} 
               src={
                 user 
                   ? user.userImg
                   : 'https://img.freepik.com/free-icon/user_318-159711.jpg'
               } alt='Imagem usuário' 
-              className={stylesh.imguser} 
+              style={{borderRadius: '50%', border: '0'}} 
             />
             <span className={stylesh.name}>{user?.nome}</span>
           </button>
@@ -69,5 +71,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

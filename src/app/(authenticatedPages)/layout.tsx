@@ -5,15 +5,15 @@ import { useRouter } from 'next/navigation';
 import { makeRequest } from '../../../axios';
 import { ReactNode } from 'react';
 
-import Header from "../../components/Header";
+import Header from '../../components/Header';
 
 export default function MainHome({children}:{children:ReactNode}) {
   const router = useRouter();
 
   const { data, error, isSuccess, isError } = useQuery ({
-    queryKey: ["refresh"],
+    queryKey: ['refresh'],
     queryFn: () => 
-      makeRequest.get("auth/refresh").then((res)=>{
+      makeRequest.get('auth/refresh').then((res) => {
         return res.data;
       }),
     retry: false,
@@ -34,5 +34,5 @@ export default function MainHome({children}:{children:ReactNode}) {
       <Header/>
       {children}      
     </main>
-  )
+  );
 }

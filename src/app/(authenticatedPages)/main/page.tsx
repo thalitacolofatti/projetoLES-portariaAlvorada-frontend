@@ -1,7 +1,9 @@
-import SearchFilter from "@/components/SearchFilter";
+"use client";
+
+import SearchFilter from '@/components/SearchFilter';
 
 function Main() {
-    return <SearchFilter/>
+  return <SearchFilter/>;
 }
 
 export default Main;

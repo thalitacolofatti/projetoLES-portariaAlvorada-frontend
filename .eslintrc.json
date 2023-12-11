@@ -1,3 +1,24 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "rules": {
+    "semi": ["error", "always"],      
+    "quotes": ["error", "single"],    
+    "indent": ["error", 2],            
+    "no-console": "warn",             
+    "no-unused-vars": "error",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off", 
+    "arrow-parens": ["error", "always"],
+    "arrow-spacing": "error",
+    "no-var": "error", 
+    "prefer-const": "error" 
+  }
 }

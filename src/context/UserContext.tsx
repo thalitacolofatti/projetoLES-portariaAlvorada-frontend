@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 
 interface ContextProps {
   children: React.ReactNode;
@@ -28,16 +28,16 @@ export const UserContext = createContext<User>(initialValue);
 export const UserContextProvider = ({children}: ContextProps) => {
   const [user, setUser] = useState(initialValue.user);
   useEffect(() => {
-    let UserJSON = localStorage.getItem('portariacolegio:user');
+    const UserJSON = localStorage.getItem('portariacolegio:user');
     setUser(UserJSON && JSON.parse(UserJSON));
   }, []);
   
-  return(
+  return (
     <UserContext.Provider value={{
       user,
       setUser
     }}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};

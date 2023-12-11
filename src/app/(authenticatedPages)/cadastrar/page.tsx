@@ -30,12 +30,12 @@ export default function CadastroResponsavel() {
         endereco,
         respImg
       })
-      .then((res)=>{
+      .then((res) => {
         console.log(res.data);
         setSuccess(res.data.msg);
         setErro('');
-        router.push("/vincular");
-      }).catch((err)=>{
+        router.push('/vincular');
+      }).catch((err) => {
         console.log(err);
         setErro(err.response.data.msg);
         setSuccess('');
@@ -56,12 +56,12 @@ export default function CadastroResponsavel() {
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Link Imagem" onChange={(e) => setRespImg(e.currentTarget.value)} /> 
             {erro.length > 0 && <span className="text-red-900 font-semibold">*{erro}</span>}
             {success.length > 0 && <span className="text-green-900 font-semibold">{success}</span>}
-            <Button onClick={(e)=>handleRegisterGuardian(e)}>
+            <Button onClick={(e) => handleRegisterGuardian(e)}>
               Cadastrar
             </Button>
           </form>
         </ContainerTitle>
       </div>
     </>
-  )
+  );
 }

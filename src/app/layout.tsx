@@ -2,7 +2,7 @@
 
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserContextProvider } from '../context/UserContext';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,5 +23,5 @@ export default function RootLayout({
         </QueryClientProvider>
       </body>
     </html>
-  )
+  );
 }
