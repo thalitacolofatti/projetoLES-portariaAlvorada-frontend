@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { makeRequest } from '../../../../axios';
 
 import ContainerTitle from '@/components/ContainerTitle';
-import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import styles from '../../../styles/Login.module.css';
 
@@ -49,12 +48,12 @@ export default function CadastroResponsavel() {
       <div className="flex flex-row gap-14">
         <ContainerTitle title="Cadastro Responsável">
           <form className={styles.form}> 
-            <Input type="text" placeholder="Nome" onChange={(e) => setNomeResp(e.currentTarget.value)} /> 
-            <Input type="text" placeholder="RG" onChange={(e) => setRg(e.currentTarget.value)} /> 
-            <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.currentTarget.value)} /> 
-            <Input type="text" placeholder="Telefone" onChange={(e) => setTelefone(e.currentTarget.value)} /> 
-            <Input type="text" placeholder="Endereço" onChange={(e) => setEndereco(e.currentTarget.value)} /> 
-            <Input type="text" placeholder="Link Imagem" onChange={(e) => setRespImg(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Nome" onChange={(e) => setNomeResp(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="RG" onChange={(e) => setRg(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="email" placeholder="Email" onChange={(e) => setEmail(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Telefone" onChange={(e) => setTelefone(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Endereço" onChange={(e) => setEndereco(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Link Imagem" onChange={(e) => setRespImg(e.currentTarget.value)} /> 
             {erro.length > 0 && <span className="text-red-900 font-semibold">*{erro}</span>}
             {success.length > 0 && <span className="text-green-900 font-semibold">{success}</span>}
             <Button onClick={(e)=>handleRegisterGuardian(e)}>

@@ -8,7 +8,6 @@ import { makeRequest } from '../../axios';
 import { IAluno } from '@/context/interfaces';
 import { IResponsavel } from "@/context/interfaces";
 
-import stylesh from '../styles/input.module.css';
 import { useRouter } from 'next/navigation';
 
 export default function SearchFilter() {
@@ -64,7 +63,7 @@ export default function SearchFilter() {
         <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={()=>setSuggestionsA(data || [])}
           >
-            <input onChange={handleChangeAluno} value={ searchAluno ? searchAluno : "" } type='text' placeholder="Buscar pelo nome" className={stylesh.inputSearch}/>
+            <input onChange={handleChangeAluno} value={ searchAluno ? searchAluno : "" } type='text' placeholder="Buscar pelo nome" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5] rounded-full"/>
             <FaSearch className="flex ml-6"/>
         </form>
         { searchAluno && suggestionsA.length > 0 && (
@@ -97,7 +96,7 @@ export default function SearchFilter() {
         <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={()=>setSuggestionsR(data || [])}
           >
-            <input onChange={handleChangeResponsavel} value={ searchResponsavel ? searchResponsavel : "" } type='text' placeholder="Buscar pelo nome" className={stylesh.inputSearch} />
+            <input onChange={handleChangeResponsavel} value={ searchResponsavel ? searchResponsavel : "" } type='text' placeholder="Buscar pelo nome" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5] rounded-full" />
             <FaSearch className="flex ml-6"/>
         </form>
         {searchResponsavel && suggestionsR.length > 0 && (

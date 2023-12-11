@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { UserContext } from '../../../context/UserContext';
 
 import LoginCard from '../../../components/LoginCard';
-import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 
 import styles from '../../../styles/Login.module.css';
@@ -47,10 +46,10 @@ export default function LoginPage() {
       <div className={styles.background}>
         <LoginCard title="Login">
           <form className={styles.form} > 
-            <Input type="text" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
-            <Input type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
-            {error.length > 0 && <span className={styles.error}>*{error}</span>}
-            <Button onSubmit={(e: any)=>handleLogin(e)}>ENTRAR</Button>
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
+            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
+            {error && error.length > 0 && <span className={styles.error}>*{error}</span>}
+            <Button onClick={(e: any)=>handleLogin(e)}>ENTRAR</Button>
           </form>
         </LoginCard>
       </div>
