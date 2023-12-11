@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
 import { makeRequest } from '../../../../axios';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
 import { IBond } from '@/context/interfaces';
 import ContainerTitle from '../../../components/ContainerTitle';
 import styles from '../../../styles/miniCard.module.css';
@@ -12,7 +11,6 @@ import Image from 'next/image';
 
 export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) {
   const router = useRouter();
-  const [bondId, setBondId]= useState<number|string>('');
 
   const alunoQuery = useQuery({
     queryKey: ['detalhe-aluno', searchParams.id],
@@ -36,7 +34,7 @@ export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) 
 
   const deleteBondMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await makeRequest.put(`vinculo/delete-bond`, {id}).then((res) => res.data.data);
+      return await makeRequest.put('vinculo/delete-bond', {id}).then((res) => res.data.data);
     },
     onSuccess: () => {
       bondQuery.refetch();
@@ -48,7 +46,6 @@ export default function DetalheAluno({searchParams}:{searchParams:{id:string}}) 
   });
 
   const handleDeleteBond = async (id:number) => {
-    setBondId(id);
     if(id) {
       deleteBondMutation.mutate(id);
     }

@@ -1,10 +1,6 @@
-"use client";
+'use client';
 
-import { createContext, useEffect, useState } from 'react';
-
-interface ContextProps {
-  children: React.ReactNode;
-}
+import React, { createContext, useEffect, useState } from 'react';
 
 interface User {
   user:
@@ -15,12 +11,20 @@ interface User {
       userImg: string;
     }
     | undefined;
+    // eslint-disable-next-line no-unused-vars
   setUser: (newState: any) => void;
+}
+
+interface ContextProps {
+  children: React.ReactNode;
 }
 
 const initialValue = {
   user: undefined,
-  setUser: () => {},
+  setUser: (newState: any) => {
+    // eslint-disable-next-line no-unused-vars
+    const unusedVariable = newState;
+  },
 };
 
 export const UserContext = createContext<User>(initialValue);

@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
 import { makeRequest } from '../../../../axios';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { IBond } from '@/context/interfaces';
-import { useState } from 'react';
 import ContainerTitle from '../../../components/ContainerTitle';
 import styles from '../../../styles/miniCard.module.css';
 import { useRouter } from 'next/navigation';
@@ -12,7 +11,6 @@ import Image from 'next/image';
 
 export default function DetalheResponsavel({searchParams}:{searchParams:{id:string}}) {
   const router = useRouter();
-  const [bondId, setBondId]= useState<number|string>('');
   const queryClient = useQueryClient();
   
   const respQuery = useQuery({
@@ -46,7 +44,7 @@ export default function DetalheResponsavel({searchParams}:{searchParams:{id:stri
   const deleteBondMutation = useMutation({
     mutationFn: async (id: number) => {
       try {
-        const res = await makeRequest.put(`vinculo/delete-bond`, { id });
+        const res = await makeRequest.put('vinculo/delete-bond', { id });
         return res.data.data;
       } catch (error) {
         console.error('Erro ao deletar:', error);
@@ -63,11 +61,9 @@ export default function DetalheResponsavel({searchParams}:{searchParams:{id:stri
   });
 
   const handleDeleteBond = async (id:number) => {
-    setBondId(id);
     if(id) {
-        deleteBondMutation.mutateAsync(id);
+      deleteBondMutation.mutateAsync(id);
     }
-    
   };
 
   return (

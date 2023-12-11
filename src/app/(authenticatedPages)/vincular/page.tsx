@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { makeRequest } from '../../../../axios';
 
@@ -38,7 +38,7 @@ export default function CadastroResponsavel() {
     setSearchResponsavel(e.target.value);
   };
 
-  const handleChangePrincipal = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangePrincipal = () => {
     setIsChecked((prev) => !prev);
   };
   

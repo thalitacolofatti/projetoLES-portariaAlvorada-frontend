@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import ContainerTitle from './ContainerTitle';
 import { FaSearch } from 'react-icons/fa';
