@@ -47,10 +47,10 @@ export default function LoginPage() {
       <div className={styles.background}>
         <LoginCard title="Login">
           <form className={styles.form} > 
-            <Input type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
+            <Input type="text" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
             <Input type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
             {error.length > 0 && <span className={styles.error}>*{error}</span>}
-            <Button onClick={(e: any)=>handleLogin(e)}>ENTRAR</Button>
+            <Button onSubmit={(e: any)=>handleLogin(e)}>ENTRAR</Button>
           </form>
         </LoginCard>
       </div>
