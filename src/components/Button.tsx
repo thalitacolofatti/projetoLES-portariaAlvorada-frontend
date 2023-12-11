@@ -1,9 +1,9 @@
 "use client";
 
-import React, { HTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styles from '../styles/button.module.css';
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
