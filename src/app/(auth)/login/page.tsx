@@ -46,6 +46,7 @@ export default function LoginPage() {
           console.error('Resposta de erro do servidor:', err.response.data);
           setError(err.response.data.msg);
         } else {
+          console.error('Erro desconhecido ao fazer login. Exceção completa:', err);
           setError('Erro desconhecido ao fazer login.');
         }
       });
@@ -61,8 +62,8 @@ export default function LoginPage() {
       <div className={styles.background}>
         <LoginCard title="Login">
           <form className="flex flex-col mt-4 gap-4" > 
-            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
-            <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
+            <input id="email" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
+            <input id="password" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
             {error && error.length > 0 && <span className={styles.error}>*{error}</span>}
             <Button onClick={(e: any) => handleLogin(e)}>ENTRAR</Button>
           </form>
