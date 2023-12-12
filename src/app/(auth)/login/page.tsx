@@ -23,13 +23,24 @@ export default function LoginPage() {
     makeRequest
       .post('auth/login', {email, password})
       .then((res) => {
-        localStorage.setItem(
-          'portariacolegio:user', 
-          JSON.stringify(res.data.user)
-        );
-        setUser(res.data.user);
-        setError('');
-        router.push('/main');
+        // localStorage.setItem(
+        //   'portariacolegio:user', 
+        //   JSON.stringify(res.data.user)
+        // );
+        // setUser(res.data.user);
+        // setError('');
+        // router.push('/main');
+        if (res.data && res.data.user) {
+          localStorage.setItem(
+            'portariacolegio:user', 
+            JSON.stringify(res.data.user)
+          );
+          setUser(res.data.user);
+          setError('');
+          router.push('/main');
+        } else {
+          setError('Resposta inválida do servidor.');
+        }
       }).catch((err) => {
         console.log(err);
         setError(err.response.data.msg);
@@ -49,7 +60,7 @@ export default function LoginPage() {
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
             {error && error.length > 0 && <span className={styles.error}>*{error}</span>}
-            <Button onClick={(e: any) => handleLogin(e)}>ENTRAR</Button>
+            <Button onSubmit={(e: any) => handleLogin(e)}>ENTRAR</Button>
           </form>
         </LoginCard>
       </div>
