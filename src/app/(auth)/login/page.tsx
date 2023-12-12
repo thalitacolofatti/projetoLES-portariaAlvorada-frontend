@@ -23,6 +23,7 @@ export default function LoginPage() {
     makeRequest
       .post('auth/login', {email, password})
       .then((res) => {
+        console.log('Resposta do servidor:', res.data);
         // localStorage.setItem(
         //   'portariacolegio:user', 
         //   JSON.stringify(res.data.user)
@@ -31,19 +32,22 @@ export default function LoginPage() {
         // setError('');
         // router.push('/main');
         if (res.data && res.data.user) {
-          localStorage.setItem(
-            'portariacolegio:user', 
-            JSON.stringify(res.data.user)
-          );
+          localStorage.setItem('portariacolegio:user', JSON.stringify(res.data.user));
           setUser(res.data.user);
           setError('');
           router.push('/main');
         } else {
+          console.error('Resposta invalida do servidor:', res.data);
           setError('Resposta inválida do servidor.');
         }
       }).catch((err) => {
-        console.log(err);
-        setError(err.response.data.msg);
+        console.error('erro ao fazer login', err);
+        if (err.response) {
+          console.error('Resposta de erro do servidor:', err.response.data);
+          setError(err.response.data.msg);
+        } else {
+          setError('Erro desconhecido ao fazer login.');
+        }
       });
   };
 
