@@ -56,7 +56,7 @@ export default function LoginPage() {
       </div>
       <div className={styles.background}>
         <LoginCard title="Login">
-          <form className={styles.form} > 
+          <form className="flex flex-col mt-4 gap-4" > 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="email" placeholder="Seu email" onChange={(e: any) => setEmail(e.currentTarget.value)} /> 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]" type="password" placeholder="Sua senha" onChange={(e:any) => setPassword(e.currentTarget.value)}/> 
             {error && error.length > 0 && <span className={styles.error}>*{error}</span>}
