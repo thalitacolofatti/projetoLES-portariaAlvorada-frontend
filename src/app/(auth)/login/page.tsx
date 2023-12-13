@@ -23,14 +23,6 @@ export default function LoginPage() {
     makeRequest
       .post('auth/login', {email, password})
       .then((res) => {
-        // console.log('Resposta do servidor:', res.data);
-        // localStorage.setItem(
-        //   'portariacolegio:user', 
-        //   JSON.stringify(res.data.user)
-        // );
-        // setUser(res.data.user);
-        // setError('');
-        // router.push('/main');
         if (res.data && res.data.user) {
           localStorage.setItem('portariacolegio:user', JSON.stringify(res.data.user));
           setUser(res.data.user);
