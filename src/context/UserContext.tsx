@@ -29,7 +29,7 @@ export const UserContext = createContext<User>(initialValue);
 export const UserContextProvider = ({children}: ContextProps) => {
   const [user, setUser] = useState(initialValue.user);
   useEffect(() => {
-    const UserJSON = localStorage.getItem('portariacolegio:user');
+    let UserJSON = localStorage.getItem('portariacolegio:user');
     setUser(UserJSON && JSON.parse(UserJSON));
   }, []);
   
