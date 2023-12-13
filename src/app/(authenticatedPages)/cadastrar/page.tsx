@@ -6,7 +6,6 @@ import { makeRequest } from '../../../../axios';
 
 import ContainerTitle from '@/components/ContainerTitle';
 import Button from '../../../components/Button';
-import styles from '../../../styles/Login.module.css';
 
 export default function CadastroResponsavel() {
   const [nomeresp, setNomeResp] = useState ('');
@@ -47,7 +46,7 @@ export default function CadastroResponsavel() {
     <> 
       <div className="flex flex-row gap-14">
         <ContainerTitle title="Cadastro Responsável">
-          <form className={styles.form}> 
+          <form id="formcadastro" className="flex flex-col mt-4 gap-4"> 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="Nome" onChange={(e) => setNomeResp(e.currentTarget.value)} /> 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="text" placeholder="RG" onChange={(e) => setRg(e.currentTarget.value)} /> 
             <input className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5]"  type="email" placeholder="Email" onChange={(e) => setEmail(e.currentTarget.value)} /> 

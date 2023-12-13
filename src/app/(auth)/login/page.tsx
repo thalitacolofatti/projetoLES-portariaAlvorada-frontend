@@ -23,7 +23,7 @@ export default function LoginPage() {
     makeRequest
       .post('auth/login', {email, password})
       .then((res) => {
-        console.log('Resposta do servidor:', res.data);
+        // console.log('Resposta do servidor:', res.data);
         // localStorage.setItem(
         //   'portariacolegio:user', 
         //   JSON.stringify(res.data.user)

@@ -21,10 +21,7 @@ interface ContextProps {
 
 const initialValue = {
   user: undefined,
-  setUser: (newState: any) => {
-    // eslint-disable-next-line no-unused-vars
-    const unusedVariable = newState;
-  },
+  setUser: () => {},
 };
 
 export const UserContext = createContext<User>(initialValue);

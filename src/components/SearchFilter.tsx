@@ -58,7 +58,7 @@ export default function SearchFilter() {
   return (
     <div className='flex flex-row gap-14'>
       <ContainerTitle title="Pesquisar por Aluno">
-        <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
+        <form id="search-aluno" className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={() => setSuggestionsA(data || [])}
         >
           <input onChange={handleChangeAluno} value={ searchAluno ? searchAluno : '' } type='text' placeholder="Buscar pelo nome" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5] rounded-full"/>
@@ -89,7 +89,7 @@ export default function SearchFilter() {
         )}
       </ContainerTitle>
       <ContainerTitle title="Pesquisar por Responsável">
-        <form className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
+        <form id="search-resp" className="flex bg-zinc-200 items-center text-gray-700 mt-4 rounded-full relative" 
           onClick={() => setSuggestionsR(data || [])}
         >
           <input onChange={handleChangeResponsavel} value={ searchResponsavel ? searchResponsavel : '' } type='text' placeholder="Buscar pelo nome" className="px-8 py-4 b-0 outline-none text-black bg-[#e6e6e6] focus:bg-[#e5e5e5] rounded-full" />
