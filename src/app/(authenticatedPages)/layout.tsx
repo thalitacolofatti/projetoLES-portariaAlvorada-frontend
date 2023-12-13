@@ -30,7 +30,7 @@ export default function MainHome({children}:{children:ReactNode}) {
   }
   
   return (
-    <main className="flex min-h-screen flex-col items-center bg-[#000]">
+    <main className="flex min-h-screen flex-col items-center">
       <Header/>
       {children}      
     </main>
